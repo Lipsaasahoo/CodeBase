@@ -1,14 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Dark Mode Toggle
-    const darkModeToggle = document.createElement("button");
-    darkModeToggle.textContent = "Dark Mode";
-    darkModeToggle.classList.add("dark-mode-toggle");
-    document.querySelector("header").appendChild(darkModeToggle);
-
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-    });
-
     // Mock Search Function
     document.getElementById("searchButton").addEventListener("click", function () {
         const query = document.getElementById("searchQuery").value;
@@ -31,5 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         resultsContainer.innerHTML = mockResult;
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const section = document.querySelector(this.getAttribute('href'));
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 });
