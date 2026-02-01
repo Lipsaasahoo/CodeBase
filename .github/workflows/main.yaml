@@ -22,40 +22,40 @@ jobs:
         working-directory: frontend
         continue-on-error: false
 
-  #     - name: Lint JavaScript
-  #       run: npm run lint:js || true
-  #       working-directory: frontend
+      - name: Lint JavaScript
+        run: npm run lint:js || true
+        working-directory: frontend
         
 
-  #     - name: Lint CSS
-  #       run: npm run lint:css || true
-  #       working-directory: frontend
+      - name: Lint CSS
+        run: npm run lint:css || true
+        working-directory: frontend
 
-  # test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-  #     - name: Validate HTML
-  #       run: npm install --save-dev html-validate && npm run validate:html || true
+      - name: Validate HTML
+        run: npm install --save-dev html-validate && npm run validate:html || true
 
-  # deploy:
-  #   needs: [lint, test]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
+  deploy:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  #     - name: Deploy to GitHub Pages
-  #       uses: peaceiris/actions-gh-pages@v3
-  #       with:
-  #         github_token: ${{ secrets.GITHUB_TOKEN }}
-  #         publish_dir: ./
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
