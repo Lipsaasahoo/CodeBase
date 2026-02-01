@@ -1,0 +1,22 @@
+name: 00.Hello World Workflow
+
+# This specifies when the workflow should be triggered
+on:
+  push:
+    branches:
+      - main
+
+# Define the jobs (tasks) that will run
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!" # This will print "Hello, World!" to the GitHub Actions log
+
+      - name: Run a custom script
+        run: |
+          echo "This is a custom script"
+          mkdir -p my_directory
+          echo "Script executed successfully!"
