@@ -1,4 +1,4 @@
-name: HTML/CSS/JS Workflow
+name: HTML/CSS/JS Workflow_Lint_Test_Deploy
 
 on:
   push:
